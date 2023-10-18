@@ -55,7 +55,16 @@ class _EditarPageState extends State<EditarPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      appBar: AppBar(title: Text("Editar o Contato ID: $id"), ),
+      appBar: AppBar(
+        title: Text("Editar o Contato ID: $id"), 
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const ContatosPage()));
+          },
+        ), 
+      ),
       body: ListView.builder(
 
         itemCount: _contato.results.length,
