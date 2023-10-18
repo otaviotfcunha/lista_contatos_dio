@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:lista_contatos_dio/pages/cadastro_page.dart';
 import 'package:lista_contatos_dio/pages/contatos_page.dart';
 import 'package:lista_contatos_dio/shared/app_images.dart';
 import 'package:lista_contatos_dio/shared/widgets/itens_menu_lateral.dart';
@@ -21,6 +22,11 @@ class MenuLateral extends StatelessWidget {
                 ),
                 accountName: const Text("@otaviotfcunha", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w900, fontSize: 20)), 
                 accountEmail: const Text("otavio@isistecnologia.com.br", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w900, fontSize: 16))
+              ),
+              const ItensMenuLateral(textMenu: "Novo cadastro", paginaDireciona: CadastroPage(), iconeMenu: Icons.add),
+              const Divider(),
+              const SizedBox(
+                height: 10,
               ),
               const ItensMenuLateral(textMenu: "Contatos salvos", paginaDireciona: ContatosPage(), iconeMenu: Icons.person),
               const Divider(),

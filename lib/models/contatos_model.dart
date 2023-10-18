@@ -7,17 +7,20 @@ class ContatosModel {
     if (json['results'] != null) {
       results = <ContatoModel>[];
       json['results'].forEach((v) {
-        results!.add(new ContatoModel.fromJson(v));
+        results.add(ContatoModel.fromJson(v));
       });
     }
   }
 
+  ContatosModel.fromJsonUnico(Map<String, dynamic> json) {
+    results = <ContatoModel>[];
+    results.add(ContatoModel.fromJson(json));
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.results != null) {
-      data['results'] = this.results!.map((v) => v.toJson()).toList();
-    }
-    return data;
+    data['results'] = results.map((v) => v.toJson()).toList();
+      return data;
   }
 }
 

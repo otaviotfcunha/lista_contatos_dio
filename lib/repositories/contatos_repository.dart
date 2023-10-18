@@ -12,20 +12,26 @@ class ContatosRepository{
     return ContatosModel.fromJson(result.data);
   }
 
-  Future<void> adicionar(ContatoModel enderecoModel) async {
+  Future<ContatosModel> exibirContato(String id) async {
+    var url = "/contatos/$id/";
+    var result = await _customDio.dio.get(url);
+    return ContatosModel.fromJsonUnico(result.data);
+  }
+
+  Future<void> adicionar(ContatoModel contatoModel) async {
     try {
       await _customDio.dio
-          .post("/contatos/", data: enderecoModel.toJsonEndpoint());
+          .post("/contatos/", data: contatoModel.toJsonEndpoint());
     } catch (e) {
       throw e;
     }
   }
 
-  Future<void> atualizar(ContatoModel enderecoModel) async {
+  Future<void> atualizar(ContatoModel contatoModel) async {
     try {
       await _customDio.dio.put(
-          "/contatos/${enderecoModel.objectId}",
-          data: enderecoModel.toJsonEndpoint());
+          "/contatos/${contatoModel.objectId}",
+          data: contatoModel.toJsonEndpoint());
     } catch (e) {
       throw e;
     }
